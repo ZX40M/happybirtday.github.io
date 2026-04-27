@@ -43,7 +43,6 @@ h2 {
   font-size: 26px;
 }
 
-/* อีโมจิลอย */
 .emoji {
   position: absolute;
   bottom: -20px;
@@ -51,7 +50,6 @@ h2 {
   animation: rise linear forwards;
 }
 
-/* animation */
 @keyframes bounce {
   0%,100% {transform: translateY(0);}
   50% {transform: translateY(-15px);}
@@ -70,7 +68,7 @@ h2 {
 
 <h2>เปิด 🎁</h2>
 
-<div class="gift" onclick="openGift()">🎁</div>
+<div id="giftBtn" class="gift" onclick="openGift()">🎁</div>
 
 <div id="codeBox">
   <div id="code">เอาข้อความไปพิมในแชทเค้ารับของขวัญนะคะ</div>
@@ -78,24 +76,26 @@ h2 {
 </div>
 
 <script>
+// เอฟเฟกต์อีโมจิทำงานตลอดเวลา
+const emojis = ["🎉","🎂","🎈","💜","✨","🎁"];
+
+setInterval(() => {
+  const e = document.createElement("div");
+  e.className = "emoji";
+  e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+  e.style.left = Math.random() * 100 + "vw";
+  e.style.fontSize = (Math.random() * 20 + 20) + "px";
+  e.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+  document.body.appendChild(e);
+
+  setTimeout(() => e.remove(), 4000);
+}, 200); // ปรับเลขนี้ = ความถี่ (ยิ่งน้อยยิ่งเยอะ)
+
 function openGift() {
+  document.getElementById("giftBtn").style.display = "none";
   document.getElementById("codeBox").style.display = "block";
-
-  const emojis = ["🎉","🎂","🎈","💜","✨","🎁"];
-
-  for (let i = 0; i < 50; i++) {
-    const e = document.createElement("div");
-    e.className = "emoji";
-    e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-
-    e.style.left = Math.random() * 100 + "vw";
-    e.style.fontSize = (Math.random() * 20 + 20) + "px";
-    e.style.animationDuration = (Math.random() * 2 + 2) + "s";
-
-    document.body.appendChild(e);
-
-    setTimeout(() => e.remove(), 4000);
-  }
 }
 </script>
 

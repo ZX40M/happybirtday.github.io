@@ -24,9 +24,12 @@ h1 {
   animation: pop 1s ease;
 }
 
-/* รูปลอย */
+/* รูป (ปรับให้เหมาะมือถือ) */
 img {
-  width: 220px;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+
   border-radius: 20px;
   margin-top: 10px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
@@ -101,7 +104,7 @@ button:hover {
 <div class="container">
   <h1>🎂 Happy Birthday 💜</h1>
 
-  <src="time.jpg">
+  <img src="time.jpg">
 
   <p>
     สุขสันต์วันเกิดนะคะไอ่หมาาา<br>
@@ -109,7 +112,6 @@ button:hover {
     ปีนี้เป็นปีแรกเลยที่ได้แฮปๆธาม <br>
     มีความสุขมากๆๆน้าไอ่อ้วนน <br>
     เค้ารักธามมากๆนะคะ อยู่ไปกะเค้าให้เค้าแฮปทุกปีเลยนะคะไอ่หมา
-    
   </p>
 
   <button onclick="goGift()">🎁 เปิดของขวัญ</button>
@@ -120,7 +122,6 @@ function goGift() {
   window.location.href = "gift.html";
 }
 
-/* สร้างหัวใจลอย */
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
