@@ -19,6 +19,12 @@ body {
   overflow: hidden;
 }
 
+/* เนื้อหาอยู่หน้า */
+h2, .gift, #codeBox {
+  position: relative;
+  z-index: 2;
+}
+
 h2 {
   margin-bottom: 20px;
 }
@@ -43,11 +49,15 @@ h2 {
   font-size: 26px;
 }
 
+/* เอฟเฟกต์อยู่หลัง */
 .emoji {
   position: absolute;
   bottom: -20px;
   font-size: 24px;
   animation: rise linear forwards;
+
+  z-index: 0;           /* หลัง */
+  pointer-events: none; /* คลิกทะลุ */
 }
 
 @keyframes bounce {
@@ -66,7 +76,7 @@ h2 {
 </head>
 <body>
 
-<h2>เปิด 🎁</h2>
+<h2 id="title">เปิด 🎁</h2>
 
 <div id="giftBtn" class="gift" onclick="openGift()">🎁</div>
 
@@ -76,7 +86,6 @@ h2 {
 </div>
 
 <script>
-// เอฟเฟกต์อีโมจิทำงานตลอดเวลา
 const emojis = ["🎉","🎂","🎈","💜","✨","🎁"];
 
 setInterval(() => {
@@ -89,12 +98,22 @@ setInterval(() => {
   e.style.animationDuration = (Math.random() * 2 + 2) + "s";
 
   document.body.appendChild(e);
-
   setTimeout(() => e.remove(), 4000);
-}, 200); // ปรับเลขนี้ = ความถี่ (ยิ่งน้อยยิ่งเยอะ)
+}, 200);
 
 function openGift() {
-  document.getElementById("giftBtn").style.display = "none";
+  const btn = document.getElementById("giftBtn");
+  const title = document.getElementById("title");
+
+  btn.style.transition = "0.3s";
+  btn.style.opacity = "0";
+  btn.style.transform = "scale(0.5)";
+  setTimeout(() => btn.style.display = "none", 300);
+
+  title.style.transition = "0.3s";
+  title.style.opacity = "0";
+  setTimeout(() => title.style.display = "none", 300);
+
   document.getElementById("codeBox").style.display = "block";
 }
 </script>

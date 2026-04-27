@@ -14,9 +14,14 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
 
+/* กล่องอยู่บนสุด */
 .box {
+  position: relative;
+  z-index: 2;
+
   background: white;
   padding: 30px;
   border-radius: 20px;
@@ -42,11 +47,29 @@ button {
   background: #c084fc;
   color: white;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #msg {
   margin-top: 10px;
   color: #a855f7;
+}
+
+/* เอฟเฟกต์อยู่ข้างหลัง */
+.emoji {
+  position: absolute;
+  bottom: -20px;
+  font-size: 24px;
+  animation: rise linear forwards;
+  z-index: 0;           /* 👈 อยู่หลัง */
+  pointer-events: none; /* 👈 กดทะลุได้ */
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 </style>
 </head>
@@ -68,12 +91,29 @@ button {
 function check() {
   let ans = document.getElementById("answer").value.trim();
 
-  if(ans === "วันเกิดเค้า") { // 🔥 แก้ได้
+  if(ans === "วันเกิดเค้า") {
     window.location.href = "main.html";
   } else {
     document.getElementById("msg").innerText = "ผิดครับไอ้หมา";
   }
 }
+
+// เอฟเฟกต์ลอยอยู่ข้างหลัง
+const emojis = ["💜","✨","🎉"];
+
+setInterval(() => {
+  const e = document.createElement("div");
+  e.className = "emoji";
+  e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+  e.style.left = Math.random() * 100 + "vw";
+  e.style.fontSize = (Math.random() * 20 + 20) + "px";
+  e.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+  document.body.appendChild(e);
+
+  setTimeout(() => e.remove(), 4000);
+}, 300);
 </script>
 
 </body>

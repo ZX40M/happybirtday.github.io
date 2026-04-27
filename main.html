@@ -20,7 +20,11 @@ body {
   min-height: 100vh;
 }
 
+/* เนื้อหาอยู่ด้านหน้า */
 .container {
+  position: relative;
+  z-index: 2;
+
   width: 90%;
   max-width: 420px;
   padding: 25px 20px;
@@ -67,14 +71,19 @@ button:hover {
   background: #f3e8ff;
 }
 
+/* เอฟเฟกต์หัวใจอยู่ด้านหลัง */
 .heart {
   position: absolute;
   bottom: -20px;
   color: #f472b6;
   font-size: 18px;
   animation: rise 5s linear infinite;
+
+  z-index: 0;            /* อยู่หลัง */
+  pointer-events: none;  /* กดทะลุ */
 }
 
+/* animation */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-12px); }
