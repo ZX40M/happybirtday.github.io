@@ -13,21 +13,29 @@ body {
   background: linear-gradient(135deg, #d8b4f8, #e9d5ff);
   color: white;
   overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .container {
-  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  padding: 25px 20px;
   animation: fadeIn 1.5s ease;
 }
 
 h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
   animation: pop 1s ease;
 }
 
-/* รูป (ปรับให้เหมาะมือถือ) */
 img {
   width: 100%;
-  max-width: 320px;
+  max-width: 280px;
   height: auto;
 
   border-radius: 20px;
@@ -36,17 +44,16 @@ img {
   animation: float 3s ease-in-out infinite;
 }
 
-/* ข้อความ */
 p {
-  margin-top: 20px;
-  font-size: 18px;
+  margin-top: 18px;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* ปุ่ม */
 button {
-  margin-top: 25px;
-  padding: 15px 25px;
-  font-size: 18px;
+  margin-top: 22px;
+  padding: 14px 22px;
+  font-size: 16px;
   border: none;
   border-radius: 15px;
   background: white;
@@ -56,23 +63,21 @@ button {
 }
 
 button:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
   background: #f3e8ff;
 }
 
-/* หัวใจลอย */
 .heart {
   position: absolute;
   bottom: -20px;
   color: #f472b6;
-  font-size: 20px;
+  font-size: 18px;
   animation: rise 5s linear infinite;
 }
 
-/* animation ต่างๆ */
 @keyframes float {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+  50% { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
 
@@ -82,7 +87,7 @@ button:hover {
 }
 
 @keyframes pop {
-  0% { transform: scale(0.5); opacity: 0; }
+  0% { transform: scale(0.6); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
@@ -92,8 +97,23 @@ button:hover {
     opacity: 1;
   }
   100% {
-    transform: translateY(-800px) translateX(50px);
+    transform: translateY(-800px) translateX(40px);
     opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 16px 26px;
   }
 }
 </style>
@@ -127,7 +147,7 @@ setInterval(() => {
   heart.className = "heart";
   heart.innerHTML = "💜";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  heart.style.fontSize = (Math.random() * 16 + 10) + "px";
 
   document.body.appendChild(heart);
 
