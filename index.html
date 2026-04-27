@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💜</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #e9d5ff, #d8b4f8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #a855f7;
+}
+
+input {
+  padding: 10px;
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: #c084fc;
+  color: white;
+  border-radius: 10px;
+}
+
+#msg {
+  margin-top: 10px;
+  color: #a855f7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>ก่อนเข้าตอบให้ถูกก่อนน 💜</h2>
+  <p>วันนี้วันอะไรคะ?</p>
+
+  <input id="answer" placeholder="พิมพ์คำตอบ">
+  <br>
+  <button onclick="check()">ไปต่อ</button>
+
+  <p id="msg"></p>
+</div>
+
+<script>
+function check() {
+  let ans = document.getElementById("answer").value.trim();
+
+  if(ans === "วันเกิดเค้า") { // 🔥 แก้ได้
+    window.location.href = "main.html";
+  } else {
+    document.getElementById("msg").innerText = "ผิดครับไอ้หมา";
+  }
+}
+</script>
+
+</body>
+</html>

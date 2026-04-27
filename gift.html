@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎁</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #e9d5ff, #d8b4f8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  color: white;
+  overflow: hidden;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.gift {
+  font-size: 90px;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+#codeBox {
+  display: none;
+  margin-top: 20px;
+  background: white;
+  color: #7e22ce;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+#code {
+  font-size: 26px;
+}
+
+/* อีโมจิลอย */
+.emoji {
+  position: absolute;
+  bottom: -20px;
+  font-size: 24px;
+  animation: rise linear forwards;
+}
+
+/* animation */
+@keyframes bounce {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-15px);}
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<h2>เปิด 🎁</h2>
+
+<div class="gift" onclick="openGift()">🎁</div>
+
+<div id="codeBox">
+  <div id="code">เอาข้อความไปพิมในแชทเค้ารับของขวัญนะคะ</div>
+  <p style="font-size:24px;">aomlovetimeteesuid</p>
+</div>
+
+<script>
+function openGift() {
+  document.getElementById("codeBox").style.display = "block";
+
+  const emojis = ["🎉","🎂","🎈","💜","✨","🎁"];
+
+  for (let i = 0; i < 50; i++) {
+    const e = document.createElement("div");
+    e.className = "emoji";
+    e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+    e.style.left = Math.random() * 100 + "vw";
+    e.style.fontSize = (Math.random() * 20 + 20) + "px";
+    e.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+    document.body.appendChild(e);
+
+    setTimeout(() => e.remove(), 4000);
+  }
+}
+</script>
+
+</body>
+</html>

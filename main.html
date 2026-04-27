@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 💜</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #d8b4f8, #e9d5ff);
+  color: white;
+  overflow: hidden;
+}
+
+.container {
+  padding: 30px;
+  animation: fadeIn 1.5s ease;
+}
+
+h1 {
+  animation: pop 1s ease;
+}
+
+/* รูปลอย */
+img {
+  width: 220px;
+  border-radius: 20px;
+  margin-top: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ข้อความ */
+p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* ปุ่ม */
+button {
+  margin-top: 25px;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 15px;
+  background: white;
+  color: #a855f7;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #f3e8ff;
+}
+
+/* หัวใจลอย */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  color: #f472b6;
+  font-size: 20px;
+  animation: rise 5s linear infinite;
+}
+
+/* animation ต่างๆ */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-800px) translateX(50px);
+    opacity: 0;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h1>🎂 Happy Birthday 💜</h1>
+
+  <img src="/time.jpg">
+
+  <p>
+    สุขสันต์วันเกิดนะคะไอ่หมาาา<br>
+    สุขสันวันเกิดนะคะโตขึ้นอีกปีแล้ววว <br>
+    ปีนี้เป็นปีแรกเลยที่ได้แฮปๆธาม <br>
+    มีความสุขมากๆๆน้าไอ่อ้วนน <br>
+    เค้ารักธามมากๆนะคะ อยู่ไปกะเค้าให้เค้าแฮปทุกปีเลยนะคะไอ่หมา
+    
+  </p>
+
+  <button onclick="goGift()">🎁 เปิดของขวัญ</button>
+</div>
+
+<script>
+function goGift() {
+  window.location.href = "gift.html";
+}
+
+/* สร้างหัวใจลอย */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💜";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>
